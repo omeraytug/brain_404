@@ -1,0 +1,78 @@
+[
+    {
+        "inputs": {
+            "question": "How do code reviews work here?"
+        },
+        "expectations": {
+            "expected_facts": [
+                "Small focused pull requests are preferred",
+                "Code reviews improve correctness and maintainability",
+                "At least one reviewer approval is required before merge"
+            ],
+            "expected_sources": [
+                "code_review_guidelines.md"
+            ]
+        }
+    },
+    {
+        "inputs": {
+            "question": "Why did we choose FastAPI?"
+        },
+        "expectations": {
+            "expected_facts": [
+                "FastAPI was chosen for typed validation",
+                "FastAPI supports async endpoints",
+                "Developer ergonomics influenced the decision"
+            ],
+            "expected_sources": [
+                "adr_001_why_fastapi.md"
+            ]
+        }
+    },
+    {
+        "inputs": {
+            "question": "When should an incident be escalated?"
+        },
+        "expectations": {
+            "expected_facts": [
+                "Escalation depends on severity",
+                "High-risk incidents should be escalated early",
+                "Escalation paths are defined in incident policy"
+            ],
+            "expected_sources": [
+                "incident_escalation_policy.md"
+            ]
+        }
+    },
+    {
+        "inputs": {
+            "question": "What rookie mistakes should interns avoid?"
+        },
+        "expectations": {
+            "expected_facts": [
+                "Common mistakes are documented",
+                "Asking too late for help can be a rookie mistake",
+                "Strong interns follow team norms and communicate early"
+            ],
+            "expected_sources": [
+                "rookie_mistakes.md",
+                "what_good_interns_do.md"
+            ]
+        }
+    },
+    {
+        "inputs": {
+            "question": "Why did we choose RAG over fine-tuning?"
+        },
+        "expectations": {
+            "expected_facts": [
+                "RAG was chosen over fine-tuning for knowledge access",
+                "Tradeoffs are described in an ADR",
+                "Maintainability was part of the decision"
+            ],
+            "expected_sources": [
+                "adr_003_why_rag_over_fine_tuning.md"
+            ]
+        }
+    }
+]

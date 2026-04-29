@@ -1,0 +1,11 @@
+[project]
+name = "evaluation"
+version = "0.1.0"
+description = "Evaluation package for Wired Al"
+requires-python = ">=3.13"
+
+dependencies = ["backend", "rag", "mlflow>=3.0", "pandas", "pytest"]
+
+[tool.uv.sources]
+backend = { workspace = true }
+rag = { workspace = true }
