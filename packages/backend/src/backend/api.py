@@ -1,6 +1,12 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from backend.model import chat
-from backend.schemas import ChatResponse, ChatRequest
+from backend.schemas import (
+    ChatResponse,
+    ChatRequest,
+    DocumentListResponse,
+    DocumentResponse,
+)
+from rag.retrieval import get_document, list_document_names
 
 app = FastAPI()
 
@@ -24,3 +30,19 @@ async def ingest():
         "endpoint": "/ingest",
         "detail": "Not wired to vector ingest; swap to pipeline when ready.",
     }
+
+
+@app.get("/documents", response_model=DocumentListResponse)
+async def list_documents(include_extension: bool = False) -> DocumentListResponse:
+    return DocumentListResponse(
+        documents=list_document_names(include_extension=include_extension)
+    )
+
+
+@app.get("/documents/{document_name}", response_model=DocumentResponse)
+async def get_document_by_name(document_name: str) -> DocumentResponse:
+    normalized = document_name if document_name.endswith(".md") else f"{document_name}.md"
+    doc = get_document(normalized)
+    if doc is None:
+        raise HTTPException(status_code=404, detail="Document not found")
+    return DocumentResponse(**doc)
