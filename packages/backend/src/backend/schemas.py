@@ -13,6 +13,16 @@ class SourceDocument(BaseModel):
     content_preview: str
 
 
+class DocumentResponse(BaseModel):
+    document_name: str
+    file_path: str
+    content: str
+
+
+class DocumentListResponse(BaseModel):
+    documents: list[str] = Field(default_factory=list)
+
+
 class ChatResponse(BaseModel):
     answer: str
     sources: list[SourceDocument] = Field(default_factory=list)
