@@ -9,6 +9,7 @@ COPY pyproject.toml uv.lock ./
 COPY packages/backend/pyproject.toml packages/backend/pyproject.toml
 COPY packages/frontend/pyproject.toml packages/frontend/pyproject.toml
 COPY packages/rag/pyproject.toml packages/rag/pyproject.toml
+COPY packages/evaluation/pyproject.toml packages/evaluation/pyproject.toml
 
 # Copy source code needed at runtime
 COPY packages/backend/src/backend packages/backend/src/backend
@@ -19,4 +20,5 @@ COPY packages/rag/knowledge_base packages/rag/knowledge_base
 RUN uv sync --frozen --no-dev --package backend
 
 WORKDIR /app/packages/backend/src/backend
-CMD ["uv", "run", "--package", "backend", "uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
+# --no-sync: use the venv from the image; avoid network/registry on every container start
+CMD ["uv", "run", "--no-sync", "--package", "backend", "uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
