@@ -1,6 +1,3 @@
-# System flowchart
-
-```mermaid
 %%{init: {"flowchart": {"nodeSpacing": 50, "rankSpacing": 70}} }%%
 flowchart TD
   U["User"] -->|Types question| ST["Streamlit UI<br/>packages/frontend/src/frontend/app.py"]
@@ -33,5 +30,4 @@ flowchart TD
     SCHEMA["Article schema<br/>packages/rag/src/rag/data_models.py<br/>content = SourceField()<br/>embedding = VectorField()"]
     SCHEMA -->|Cohere model EMBEDDING_MODEL| LDB
   end
-```
 
